@@ -14,8 +14,15 @@ import java.security.NoSuchAlgorithmException;
 
 public class Hash { 
 	
-	private static BigInteger hashint; 
+	// Class variables
+	private static BigInteger hashint;
 	
+	public static int mbit = 4;
+	public static int sbit = 4;
+	
+	// Class methods
+	
+	// hashOf() method
 	public static BigInteger hashOf(String entity) {		
 		
 		// Task: Hash a given string using MD5 and return the result as a BigInteger.
