@@ -14,8 +14,15 @@ import java.security.NoSuchAlgorithmException;
 
 public class Hash { 
 	
-	private static BigInteger hashint; 
+	// Class variables
+	private static BigInteger hashint;
 	
+	public static int mbit = 4;
+	public static int sbit = 4;
+	
+	// Class methods
+	
+	// hashOf() method
 	public static BigInteger hashOf(String entity) {		
 		
 		// Task: Hash a given string using MD5 and return the result as a BigInteger.
@@ -30,9 +37,28 @@ public class Hash {
 		
 		// return the BigInteger
 		
+		try {
+			
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			
+			byte[] digest = md.digest(entity.getBytes("utf8"));
+			
+			mbit = digest.length*8;
+			
+			String hashValue = DatatypeConverter.printHexBinary(digest);
+			
+			hashint = new BigInteger(hashvalue, 16);
+			
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e){
+			
+			e.printStackTrace();
+			
+		}
+		
 		return hashint;
 	}
 	
+	// addressSize() method
 	public static BigInteger addressSize() {
 		
 		// Task: compute the address size of MD5
@@ -45,7 +71,11 @@ public class Hash {
 		
 		// return the address size
 		
-		return null;
+		BigInteger modulos = new BigInteger("2");
+		
+		modulos = modulos.pow(mbit);
+		
+		return modulos;
 	}
 	
 	public static int bitSize() {
@@ -54,7 +84,13 @@ public class Hash {
 		
 		// find the digest length
 		
-		return digestlen*8;
+		// Usikker på denne!!
+		
+		mbit = digest.length*8;
+		
+		digestlen = mbit;
+		
+		return digestlen;
 	}
 	
 	public static String toHex(byte[] digest) {
