@@ -37,9 +37,28 @@ public class Hash {
 		
 		// return the BigInteger
 		
+		try {
+			
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			
+			byte[] digest = md.digest(entity.getBytes("utf8"));
+			
+			mbit = digest.length*8;
+			
+			String hashValue = DatatypeConverter.printHexBinary(digest);
+			
+			hashint = new BigInteger(hashvalue, 16);
+			
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e){
+			
+			e.printStackTrace();
+			
+		}
+		
 		return hashint;
 	}
 	
+	// addressSize() method
 	public static BigInteger addressSize() {
 		
 		// Task: compute the address size of MD5
