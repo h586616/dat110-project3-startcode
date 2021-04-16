@@ -84,7 +84,13 @@ public class Hash {
 		
 		// find the digest length
 		
-		return digestlen*8;
+		// Usikker på denne!!
+		
+		mbit = digest.length*8;
+		
+		digestlen = mbit;
+		
+		return digestlen;
 	}
 	
 	public static String toHex(byte[] digest) {
