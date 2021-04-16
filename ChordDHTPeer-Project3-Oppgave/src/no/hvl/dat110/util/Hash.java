@@ -75,7 +75,7 @@ public class Hash {
 		
 		modulos = modulos.pow(mbit);
 		
-		return null;
+		return modulos;
 	}
 	
 	public static int bitSize() {
