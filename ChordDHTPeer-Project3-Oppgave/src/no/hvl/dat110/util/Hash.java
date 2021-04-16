@@ -71,6 +71,10 @@ public class Hash {
 		
 		// return the address size
 		
+		BigInteger modulos = new BigInteger("2");
+		
+		modulos = modulos.pow(mbit);
+		
 		return null;
 	}
 	
