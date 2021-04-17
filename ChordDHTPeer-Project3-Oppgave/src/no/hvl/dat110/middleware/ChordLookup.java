@@ -45,7 +45,7 @@ public class ChordLookup {
 				
 		
 		NodeInterface succ = node.getSuccessor();
-		NodeInterface succstub = Util.getProcessStub(node.getNodeName(), node.getPort()); // hmm her ??
+		NodeInterface succstub = Util.getProcessStub(succ.getNodeName(), succ.getPort()); // hmm her ??
 		
 		if(succstub != null) {
 			BigInteger succId = succstub.getNodeID();
